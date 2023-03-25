@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Footer from "../src/components/patterns/Footer";
 
 function Title({ children }) {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       <Title>PÁGINA INICIAL</Title>
       <Link href="/secondary">Outra página</Link>
+      <Footer />
     </>
   );
 }
