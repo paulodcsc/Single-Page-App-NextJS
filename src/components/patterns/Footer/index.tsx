@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <Box
       as="footer"
-      styleSheet={{
+      stylesheet={{
         backgroundColor: theme.colors.neutral[900],
         focus: null,
         hover: null,
@@ -13,7 +13,7 @@ export default function Footer() {
       }}
     >
       <Box
-        styleSheet={{
+        stylesheet={{
           overflow: "hidden",
           maxWidth: theme.space.xcontainer_xl,
           marginLeft: "auto",
@@ -34,7 +34,7 @@ export default function Footer() {
       >
         <Text
           as="p"
-          styleSheet={{
+          stylesheet={{
             textVariant: theme.typography.variants.body3,
             textAlign: "center",
             color: theme.colors.neutral[400],

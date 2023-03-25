@@ -52,7 +52,7 @@ function renderCSS(props, currentBreakpoint) {
 
 export function Box({
   as,
-  styleSheet: { focus, hover, srOnly, ...styleSheet },
+  stylesheet: { focus, hover, srOnly, ...stylesheet },
   ...props
 }) {
   const Tag = as || "div";
@@ -67,7 +67,7 @@ export function Box({
       />
       <style jsx>{`
         ${Tag} {
-          ${renderCSS(styleSheet, "xs")};
+          ${renderCSS(stylesheet, "xs")};
         }
         ${Tag}:hover {
           ${renderCSS(hover, "xs")};
@@ -79,7 +79,7 @@ export function Box({
             "Breakpoints.sm"
           ]}px) {
           ${Tag} {
-            ${renderCSS(styleSheet, "sm")};
+            ${renderCSS(stylesheet, "sm")};
           }
           ${Tag}:hover {
             ${renderCSS(hover, "sm")};
@@ -92,7 +92,7 @@ export function Box({
             "Breakpoints.md"
           ]}px) {
           ${Tag} {
-            ${renderCSS(styleSheet, "md")};
+            ${renderCSS(stylesheet, "md")};
           }
           ${Tag}:hover {
             ${renderCSS(hover, "md")};
@@ -105,7 +105,7 @@ export function Box({
             "Breakpoints.lg"
           ]}px) {
           ${Tag} {
-            ${renderCSS(styleSheet, "lg")};
+            ${renderCSS(stylesheet, "lg")};
           }
           ${Tag}:hover {
             ${renderCSS(hover, "lg")};
@@ -118,7 +118,7 @@ export function Box({
             "Breakpoints.xl"
           ]}px) {
           ${Tag} {
-            ${renderCSS(styleSheet, "xl")};
+            ${renderCSS(stylesheet, "xl")};
           }
           ${Tag}:hover {
             ${renderCSS(hover, "xl")};
@@ -133,7 +133,7 @@ export function Box({
 }
 
 /* @media screen and (min-width: ${theme.breakpoints['Breakpoints.md']}px) {
-          ${renderCSS(styleSheet, 'md')};
+          ${renderCSS(stylesheet, 'md')};
           :hover {
             ${renderCSS(hover, 'md')};
           }
@@ -142,7 +142,7 @@ export function Box({
           }
         }
         @media screen and (min-width: ${theme.breakpoints['Breakpoints.lg']}px) {
-          ${renderCSS(styleSheet, 'lg')};
+          ${renderCSS(stylesheet, 'lg')};
           :hover {
             ${renderCSS(hover, 'lg')};
           }
@@ -151,7 +151,7 @@ export function Box({
           }
         }
         @media screen and (min-width: ${theme.breakpoints['Breakpoints.xl']}px) {
-          ${renderCSS(styleSheet, 'xl')};
+          ${renderCSS(stylesheet, 'xl')};
           :hover {
             ${renderCSS(hover, 'xl')};
           }
@@ -161,12 +161,12 @@ export function Box({
         } */
 
 Box.defaultProps = {
-  styleSheet: {},
+  stylesheet: {},
 };
 
-export function Icon({ as, styleSheet, ...props }) {
-  const { iconVariant, ...restStyleSheet } = styleSheet;
-  const styleSheetUpdated = restStyleSheet;
+export function Icon({ as, stylesheet, ...props }) {
+  const { iconVariant, ...reststylesheet } = stylesheet;
+  const stylesheetUpdated = reststylesheet;
 
   console.log("iconVariant", iconVariant);
 
@@ -175,29 +175,29 @@ export function Icon({ as, styleSheet, ...props }) {
       as={FontAwesomeIcon}
       icon={iconSet[`fa${capitalize(iconVariant)}`]}
       crossOrigin="anonymous"
-      styleSheet={{
+      stylesheet={{
         width: "1.5ch",
         height: "1.5ch",
-        ...styleSheetUpdated,
+        ...stylesheetUpdated,
       }}
       {...props}
     />
   );
 }
 
-export function Text({ as, styleSheet, ...props }) {
+export function Text({ as, stylesheet, ...props }) {
   const {
     textVariant = {
       fontSize: "inherit",
     },
-    ...restStyleSheet
-  } = styleSheet;
-  const styleSheetUpdated = { ...textVariant, ...restStyleSheet };
+    ...reststylesheet
+  } = stylesheet;
+  const stylesheetUpdated = { ...textVariant, ...reststylesheet };
   const tag = as || "span";
-  return <Box as={tag} styleSheet={styleSheetUpdated} {...props} />;
+  return <Box as={tag} stylesheet={stylesheetUpdated} {...props} />;
 }
 Text.defaultProps = {
-  styleSheet: {},
+  stylesheet: {},
 };
 
 export function Image({ as, ...props }) {
@@ -207,12 +207,12 @@ export function Image({ as, ...props }) {
   return <Box as={tag} {...imageProps} />;
 }
 Image.defaultProps = {
-  styleSheet: {},
+  stylesheet: {},
 };
 
-export function Input({ as, styleSheet, ...props }) {
+export function Input({ as, stylesheet, ...props }) {
   const tag = "input";
-  const finalStyleSheet = {
+  const finalstylesheet = {
     transition: "all 0.2s ease-in-out",
     outline: 0,
     textVariant: theme.typography.variants.body2,
@@ -228,20 +228,20 @@ export function Input({ as, styleSheet, ...props }) {
       border: `1px solid ${theme.colors.primary[500]}`,
       boxShadow: `0 5px 10px -5px ${theme.colors.neutral[999]}43`,
     },
-    ...styleSheet,
+    ...stylesheet,
   };
 
-  return <Text as={tag} styleSheet={finalStyleSheet} {...props} />;
+  return <Text as={tag} stylesheet={finalstylesheet} {...props} />;
 }
 Input.defaultProps = {
-  styleSheet: {},
+  stylesheet: {},
 };
 
-export function Button({ as, styleSheet, ...props }) {
-  const { buttonVariant = "primary", ...restStyleSheet } = styleSheet;
+export function Button({ as, stylesheet, ...props }) {
+  const { buttonVariant = "primary", ...reststylesheet } = stylesheet;
   const tag = "button";
 
-  const finalStyleSheet = {
+  const finalstylesheet = {
     cursor: "pointer",
     textVariant: theme.typography.variants.body2,
     color: theme.colors.neutral["000"],
@@ -266,11 +266,11 @@ export function Button({ as, styleSheet, ...props }) {
       backgroundColor: theme.colors[buttonVariant][700],
       boxShadow: `0 5px 10px -5px ${theme.colors.neutral[999]}93`,
     },
-    ...restStyleSheet,
+    ...reststylesheet,
   };
 
-  return <Text as={tag} styleSheet={finalStyleSheet} {...props} />;
+  return <Text as={tag} stylesheet={finalstylesheet} {...props} />;
 }
 Button.defaultProps = {
-  styleSheet: {},
+  stylesheet: {},
 };
