@@ -1,5 +1,5 @@
+import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export async function getStaticProps() {
   const TEXT_API_URL = "https://640c99cb94ce1239b0b138d4.mockapi.io/text";
@@ -7,10 +7,6 @@ export async function getStaticProps() {
     .then((response) => {
       return response.json();
     })
-    .then((response) => {
-      console.log(response);
-      return response;
-    });
 
   return {
     props: {
@@ -20,12 +16,11 @@ export async function getStaticProps() {
 }
 
 export default function Secondary({ text }) {
-  //const [text, setText] = useState([]);
-  //useEffect(() => {
-  //}, []);
-
   return (
     <>
+      <Head>
+        <title>Secondary</title>
+      </Head>
       <h1>TEXTOS</h1>
       <Link href="/">Voltar</Link>
       <ul>
